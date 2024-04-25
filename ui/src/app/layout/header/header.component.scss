@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-item {
+
+
+    &__logo {
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+  }
+}
