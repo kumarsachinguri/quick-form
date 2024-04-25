@@ -1,0 +1,44 @@
+%heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.heading-1 {
+  @extend %heading;
+  color: var(--color-primary);
+}
+
+.heading-2 {
+  @extend %heading;
+  font-size: 4rem;
+  line-height: 1;
+  font-style: italic;
+
+  &--light {
+    color: var(--color-gray-light-1);
+  }
+  &--dark {
+    color: var(--color-gray-dark-1);
+  }
+}
+
+.heading-3 {
+  @extend %heading;
+  font-size: 1.6rem;
+  color: var(--font-primary);
+  text-transform: uppercase;
+}
+
+.heading-4 {
+  @extend %heading;
+  font-size: 1.9rem;
+
+  &--light {
+    color: var(--color-gray-light-1);
+  }
+  &--dark {
+    color: var(--color-gray-dark-1);
+  }
+}
+
+
