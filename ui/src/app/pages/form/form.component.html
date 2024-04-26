@@ -1,0 +1,57 @@
+<form class="container">
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+
+  <div class="question-container">
+    @for (question of questions; track $index) {
+    <div class="question-box">
+      <div class="question-box__action">
+        <button
+          type="button"
+          mat-icon-button
+          aria-label="Move question downward"
+        >
+          <mat-icon>arrow_downward</mat-icon>
+        </button>
+        <button type="button" mat-icon-button aria-label="Move question upward">
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+        <button type="button" mat-icon-button aria-label="Copy Question">
+          <mat-icon>file_copy</mat-icon>
+        </button>
+        <button
+          type="button"
+          class="btn drag__handle"
+          aria-label="Drag Question to arrange"
+        >
+          <mat-icon>drag_indicator</mat-icon>
+        </button>
+      </div>
+      <mat-form-field>
+        <mat-label>Question Heading</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      </mat-form-field>
+
+      <mat-selection-list #shoes [multiple]="true">
+        @for (shoe of typesOfShoes; track shoe) {
+          <mat-list-option [value]="shoe">{{shoe}}</mat-list-option>
+        }
+      </mat-selection-list>
+
+      <p>
+        Option selected: {{shoes.selectedOptions.hasValue() ? shoes.selectedOptions.selected[0].value : 'None'}}
+      </p>
+
+    </div>
+    }
+  </div>
+
+  <button mat-stroked-button type="button" class="btn-add__question" (click)="onClick()">+ Add questions</button>
+</form>
