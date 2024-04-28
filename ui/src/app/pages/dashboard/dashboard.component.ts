@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 export interface ChipColor {
   name: string;
@@ -12,13 +8,7 @@ export interface ChipColor {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatChipsModule,
-    RouterLink,
-  ],
+  imports: [RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
