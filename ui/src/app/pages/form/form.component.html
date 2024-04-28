@@ -1,17 +1,50 @@
-<form class="container">
-  <input type="text" />
-  <textarea cols="30" rows="10"></textarea>
+<form class="container" [formGroup]="form">
+  <div class="row rounded bg-light p-md-5 p-3 my-3">
+    <h2 class="text-center fw-bold mb-3">New Form</h2>
+    <div class="col-12 mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Title"
+          formControlName="title"
+        />
+        <label for="title">Title</label>
+      </div>
+    </div>
+    <div class="col-12 mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          placeholder="Description"
+          formControlName="description"
+        />
+        <label for="description">Description</label>
+      </div>
+    </div>
+  </div>
 
-  <div class="question-container">
-    @for (question of questions; track $index) {
-    <div class="question-box">
-      <div class="question-box__action">&dArr; &uArr; &copy; &curarr;</div>
-      <input type="text" />
+  @if (questions.length > 0) {
+  <div class="row rounded bg-light p-md-5 p-3 mb-3" formArrayName="questions">
+    <div class="col-12">
+      <h3 class="text-center mb-3">Questions</h3>
+    </div>
+    @for (question of questions.controls; track $index) {
+    <div class="col-12" [formGroupName]="$index">
+      <app-question [question]="getQuestion($index)" />
     </div>
     }
   </div>
+  }
 
-  <button type="button" class="btn-add__question" (click)="onClick()">
-    + Add questions
-  </button>
+  <div class="row">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" (click)="onAddQuestion()">
+        + Add question
+      </button>
+    </div>
+  </div>
 </form>
