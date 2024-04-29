@@ -1,11 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Question, Text } from '../../model/interfaces/question';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-question',
-  standalone: true,
-  imports: [ReactiveFormsModule],
+  standalone: false,
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss',
 })
@@ -15,4 +13,7 @@ export class QuestionComponent {
     this.question = this.question;
   }
 
+  public get childQuestions() {
+    return this.question.get('details')?.value as FormArray;
+  }
 }

@@ -1,0 +1,44 @@
+<div class="col-12 mb-3">
+  <div class="card">
+    <div
+      class="card-header d-flex align-items-center justify-content-end gap-3"
+    >
+      <i class="bi bi-arrow-down"></i>
+      <i class="bi bi-arrow-up"></i>
+      <i class="bi bi-copy"></i>
+    </div>
+    <form class="card-body" [formGroup]="question">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="title"
+          formControlName="title"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="description"
+          formControlName="description"
+        />
+      </div>
+
+      @switch ( question.get('type')?.value ) {
+        @case ('Select') {
+          <app-select-question />
+        }
+        @case ('Ranking') {
+          <app-ranking-question />
+        }
+        @case ('Rating') {
+          <app-rating-question />
+        }
+        @case ('Nested') {
+          <app-nested-question [questions]="childQuestions"/>
+        }
+      }
+    </form>
+  </div>
+</div>

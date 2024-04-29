@@ -13,7 +13,7 @@ export interface Question {
 }
 
 export interface Text {
-  type: 'Text' | 'Email';
+  type: 'text' | 'number' | 'date' | 'file' | 'email';
   longAnswer: boolean;
 }
 

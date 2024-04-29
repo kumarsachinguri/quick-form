@@ -1,44 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { QuestionComponent } from '../../components/question/question.component';
-import { Question } from '../../model/interfaces/question';
-import {
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { QuestionType } from '../../model/enum/question-type';
-import { KeyValuePipe } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { QuestionType } from '../../../model/enum/question-type';
 
 @Component({
-  selector: 'app-form',
-  standalone: true,
-  imports: [QuestionComponent, ReactiveFormsModule, KeyValuePipe],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss',
+  selector: 'app-nested-question',
+  standalone: false,
+  templateUrl: './nested-question.component.html',
+  styleUrl: './nested-question.component.scss',
 })
-export class FormComponent implements OnInit {
-  public form: FormGroup;
+export class NestedQuestionComponent {
+  @Input('questions') questions: FormArray<FormGroup> = new FormArray(
+    [] as FormGroup[]
+  );
+
   public questionTypes: typeof QuestionType = QuestionType;
 
-  constructor(private _fb: FormBuilder) {
-    this.form = _fb.group({
-      title: ['Untitled 1', Validators.required],
-      description: [''],
-      questions: _fb.array([] as FormGroup[]),
-    });
-  }
-
-  ngOnInit(): void {}
-
-  public get questions(): FormArray {
-    return this.form.controls['questions'] as FormArray;
-  }
-
-  public getQuestion(index: number): FormGroup {
-    return this.questions.controls.at(index) as FormGroup;
-  }
+  constructor(private _fb: FormBuilder) {}
 
   onAddQuestion(type: QuestionType) {
     let question: FormGroup = this._fb.group({
