@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-select-question',
@@ -10,16 +11,13 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class SelectQuestionComponent {
   @Input('detail') detail: FormGroup = new FormGroup({});
 
+  constructor(private _questionSvc: QuestionService) {}
+
   public get options(): FormArray {
     return this.detail.get('options') as FormArray;
   }
 
   addOption() {
-    this.options.push(
-      new FormGroup({
-        title: new FormControl('Option', Validators.required),
-        description: new FormControl(''),
-      })
-    );
+    this.options.push(this._questionSvc.createOption());
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-ranking-question',
@@ -12,19 +13,11 @@ export class RankingQuestionComponent implements OnInit {
     [] as FormGroup[]
   );
 
-  ngOnInit(): void {
-    console.log(this.details);
-  }
+  constructor(private _questionSvc: QuestionService) {}
+
+  ngOnInit(): void {}
 
   addOption() {
-    this.details.push(
-      new FormGroup({
-        options: new FormGroup({
-          title: new FormControl('Option', Validators.required),
-          description: new FormControl(''),
-        }),
-        order: new FormControl(0, Validators.required),
-      })
-    );
+    this.details.push(this._questionSvc.createRankingQuestion());
   }
 }

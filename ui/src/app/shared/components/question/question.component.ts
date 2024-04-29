@@ -9,12 +9,9 @@ import { FormArray, FormGroup } from '@angular/forms';
 })
 export class QuestionComponent implements OnInit {
   @Input('question') question: FormGroup = new FormGroup({});
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.question)
-  }
+  ngOnInit(): void {}
 
   public get details(): FormArray {
     return this.question.get('details') as FormArray;
