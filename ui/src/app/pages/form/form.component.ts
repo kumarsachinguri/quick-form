@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionComponent } from '../../components/question/question.component';
-import { Question } from '../../model/interfaces/question';
 import {
   FormArray,
   FormBuilder,
@@ -10,11 +8,12 @@ import {
 } from '@angular/forms';
 import { QuestionType } from '../../model/enum/question-type';
 import { KeyValuePipe } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [QuestionComponent, ReactiveFormsModule, KeyValuePipe],
+  imports: [SharedModule, ReactiveFormsModule, KeyValuePipe],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })

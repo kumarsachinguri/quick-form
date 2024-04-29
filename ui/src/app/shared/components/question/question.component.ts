@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,13 +7,20 @@ import { FormArray, FormGroup } from '@angular/forms';
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss',
 })
-export class QuestionComponent {
+export class QuestionComponent implements OnInit {
   @Input('question') question: FormGroup = new FormGroup({});
   constructor() {
-    this.question = this.question;
   }
 
-  public get childQuestions() {
-    return this.question.get('details')?.value as FormArray;
+  ngOnInit(): void {
+    console.log(this.question)
+  }
+
+  public get details(): FormArray {
+    return this.question.get('details') as FormArray;
+  }
+
+  public get detail(): FormGroup {
+    return this.question.get('details') as FormGroup;
   }
 }

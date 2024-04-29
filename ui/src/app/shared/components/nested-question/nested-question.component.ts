@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuestionType } from '../../../model/enum/question-type';
 
@@ -8,7 +8,7 @@ import { QuestionType } from '../../../model/enum/question-type';
   templateUrl: './nested-question.component.html',
   styleUrl: './nested-question.component.scss',
 })
-export class NestedQuestionComponent {
+export class NestedQuestionComponent implements OnInit {
   @Input('questions') questions: FormArray<FormGroup> = new FormArray(
     [] as FormGroup[]
   );
@@ -16,6 +16,10 @@ export class NestedQuestionComponent {
   public questionTypes: typeof QuestionType = QuestionType;
 
   constructor(private _fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    console.log(this.questions);
+  }
 
   onAddQuestion(type: QuestionType) {
     let question: FormGroup = this._fb.group({

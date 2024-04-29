@@ -4,5 +4,4 @@ export enum QuestionType {
   "Select" = "Select",
   "Ranking" = "Ranking",
   "Nested" = "Nested",
-  "FollowUp" = "FollowUp",
 }

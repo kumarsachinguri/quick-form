@@ -7,6 +7,7 @@ import { RatingQuestionComponent } from './components/rating-question/rating-que
 import { RankingQuestionComponent } from './components/ranking-question/ranking-question.component';
 import { SelectQuestionComponent } from './components/select-question/select-question.component';
 import { COMPONENT_A_TOKEN, COMPONENT_B_TOKEN } from './component.token';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { COMPONENT_A_TOKEN, COMPONENT_B_TOKEN } from './component.token';
     RankingQuestionComponent,
     SelectQuestionComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   providers: [
     { provide: COMPONENT_A_TOKEN, useValue: QuestionComponent },
     { provide: COMPONENT_B_TOKEN, useValue: NestedQuestionComponent },

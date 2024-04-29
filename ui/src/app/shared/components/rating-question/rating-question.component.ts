@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-rating-question',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './rating-question.component.scss'
 })
 export class RatingQuestionComponent {
+
+  @Input('detail') detail: FormGroup = new FormGroup({});
 
 }
