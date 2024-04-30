@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 export interface ChipColor {
@@ -8,11 +9,17 @@ export interface ChipColor {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+  public chips = [
+    { icon: 'bi-clock', name: 'Recent', selected: true },
+    { icon: 'bi-file-earmark-person', name: 'My Forms', selected: false },
+    { icon: 'bi-bookmark', name: 'Filled Forms', selected: false },
+    { icon: 'bi-star', name: 'Favorites', selected: false },
+  ];
   public surveys = [
     {
       title: `Workplace Satisfaction`,
