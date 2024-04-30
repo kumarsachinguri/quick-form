@@ -1,3 +1,8 @@
-.form-control {
+.input-group {
   max-width: 18rem;
+  min-width: 12rem;
+}
+
+.bi-plus-lg.bi::before {
+  font-weight: bold !important;
 }

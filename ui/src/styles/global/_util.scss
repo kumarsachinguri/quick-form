@@ -6,3 +6,9 @@
   height: 1px;
   overflow: hidden;
 }
+
+.view-lg {
+  @include breakpoint(small) {
+    display: none;
+  }
+}

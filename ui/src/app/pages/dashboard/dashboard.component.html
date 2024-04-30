@@ -1,6 +1,21 @@
 <div class="row p-3">
-  <div class="col-12 d-flex align-items-center justify-content-between">
-    <input type="email" class="form-control" id="search" placeholder="Search by Keyword">
-    <a class="btn btn-primary btn-sm" [routerLink]="['/form']">+ Add new Form</a>
+  <div
+    class="col-12 d-flex align-items-center justify-content-between gap-3 p-0"
+  >
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        id="search"
+        placeholder="Search by Keyword"
+      />
+      <div class="input-group-text">
+        <i class="bi bi-search"></i>
+      </div>
+    </div>
+    <a class="btn btn-primary" [routerLink]="['/form']">
+      <i class="bi bi-plus-lg"></i>
+      <span class="view-lg fw-bold"> Add new Form</span>
+    </a>
   </div>
 </div>
