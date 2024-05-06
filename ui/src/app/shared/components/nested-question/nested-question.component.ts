@@ -5,7 +5,6 @@ import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-nested-question',
-  standalone: false,
   templateUrl: './nested-question.component.html',
   styleUrl: './nested-question.component.scss',
 })

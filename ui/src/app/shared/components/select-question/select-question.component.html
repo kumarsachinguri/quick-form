@@ -18,7 +18,13 @@
       + Add option
     </button>
   </div>
-  <div class="col-6">
+
+  @for (item of formInputs; track $index) {
+    <div class="col-6">
+      <app-form-input [formInput]="item"></app-form-input>
+    </div>
+  }
+  <!-- <div class="col-6">
     <div class="form-check">
       <input
         class="form-check-input"
@@ -28,8 +34,8 @@
       />
       <label class="form-check-label" for="multiple"> Multiple </label>
     </div>
-  </div>
-  <div class="col-6">
+  </div> -->
+  <!-- <div class="col-6">
     <div class="form-check">
       <input
         class="form-check-input"
@@ -39,5 +45,5 @@
       />
       <label class="form-check-label" for="listView"> List View </label>
     </div>
-  </div>
+  </div> -->
 </form>

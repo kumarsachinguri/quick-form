@@ -1,12 +1,7 @@
 @for (control of details.controls; track $index) {
 <form class="row mb-2" [formGroup]="control">
-  <div class="col-12" formGroupName="options">
-    <input
-      type="text"
-      class="form-control mb-3"
-      placeholder="Title"
-      formControlName="title"
-    />
+  <div class="col-12 mb-3" formGroupName="options">
+    <app-form-input [formInput]="formInput" />
   </div>
 </form>
 }

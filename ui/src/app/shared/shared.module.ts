@@ -8,6 +8,7 @@ import { RankingQuestionComponent } from './components/ranking-question/ranking-
 import { SelectQuestionComponent } from './components/select-question/select-question.component';
 import { COMPONENT_A_TOKEN, COMPONENT_B_TOKEN } from './component.token';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormInputComponent } from './components/form-input/form-input.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NestedQuestionComponent,
     RatingQuestionComponent,
     RankingQuestionComponent,
-    SelectQuestionComponent
+    SelectQuestionComponent,
+    FormInputComponent
   ],
   imports: [CommonModule, ReactiveFormsModule],
   providers: [
@@ -27,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NestedQuestionComponent,
     RatingQuestionComponent,
     RankingQuestionComponent,
-    SelectQuestionComponent
+    SelectQuestionComponent,
+    FormInputComponent
   ],
 })
 export class SharedModule {}
