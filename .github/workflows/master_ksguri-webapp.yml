@@ -23,7 +23,6 @@ jobs:
 
       - name: Build Angular app
         run: |
-          cd ui
           npm install
           ng build --prod
         working-directory: ui
