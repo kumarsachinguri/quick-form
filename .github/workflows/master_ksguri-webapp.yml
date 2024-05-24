@@ -24,7 +24,7 @@ jobs:
       - name: Build Angular app
         run: |
           npm install
-          ng build --prod
+          npm run build
         working-directory: ui
 
       - name: Upload artifact for deployment job
