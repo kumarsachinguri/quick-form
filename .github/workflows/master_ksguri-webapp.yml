@@ -21,23 +21,24 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install, build, and test
+      - name: Build Angular app
         run: |
+          cd ui
           npm install
-          npm run build --if-present
-          npm run test --if-present
-      
+          ng build --prod
+        working-directory: ui
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: node-app
-          path: .
+          name: angular-app
+          path: ui/dist
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -46,20 +47,20 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: node-app
+          name: angular-app
+          path: .
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E9676DD8B37D40BFBA16809E64DFD311 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8AEF38E6E30140B5AC1B92F5D1ABC1A8 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EC3B9E60A102465BACC25299C085DE5E }}
+          client-id: ${{ secrets.__clientidsecretname__ }}
+          tenant-id: ${{ secrets.__tenantidsecretname__ }}
+          subscription-id: ${{ secrets.__subscriptionidsecretname__ }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'ksguri-webapp'
-          slot-name: 'Production'
+          slot-name: 'production'
           package: .
-          
