@@ -356,12 +356,12 @@ MigrationBackup/
 **/Node_Modules/
 
 # package-lock for angular applications
-prep-day/package-lock.json
+ui/package-lock.json
 
 # dist folder for angular build
-prep-day/dist
+ui/dist
 
 #cache folder for angular v13
-prep-day/.angular
+ui/.angular
 
 
